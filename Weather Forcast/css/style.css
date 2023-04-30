@@ -64,3 +64,9 @@ button[type="submit"] {
   margin-bottom: 5px;
   color: #333333;
 }
+.error {
+    background-color: #ffe0e0;
+    border: 1px solid #ff6b6b;
+    padding: 10px;
+    margin: 10px 0;
+}
