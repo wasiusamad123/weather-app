@@ -59,21 +59,31 @@ if(isset($_POST['submit'])){
     $data = file_get_contents($url);
     $weather = json_decode($data);
 
-    $city = $weather->name;
-    $temp = $weather->main->temp;
-    $desc = $weather->weather[0]->description;
+    if ($weather != null) {
+        $city = $weather->name;
+        $temp = $weather->main->temp;
+        $desc = $weather->weather[0]->description;
 ?>
 
+        <div class="result">
+            <h2>Current Weather for <?php echo $city; ?></h2>
+            <p>Temperature: <?php echo $temp; ?>&deg;C</p>
+            <p>Description: <?php echo $desc; ?></p>
+        </div>
 
-		<div class="result">
-			<h2>Current Weather for <?php echo $city; ?></h2>
-			<p>Temperature: <?php echo $temp; ?>&deg;C</p>
-			<p>Description: <?php echo $desc; ?></p>
-		</div>
+<?php
+    } else {
+?>
 
-		<?php
-			}
-		?>
+        <div class="error">
+            <h2>Error</h2>
+            <p>Sorry, we could not find weather information for the <?php echo $state; ?> state.</p>
+        </div>
+
+<?php
+    }
+}
+?>
 </div>
 </body>
 </html>
