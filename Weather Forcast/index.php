@@ -56,7 +56,14 @@ if(isset($_POST['submit'])){
     $state = $_POST['state'];
     $api_key = "2263c302991103b5b7f82ea80742497d";
     $url = "https://api.openweathermap.org/data/2.5/weather?q=" . $state . ",NG&appid=" . $api_key . "&units=metric";
-    $data = file_get_contents($url);
+
+    try {
+        $data = file_get_contents($url);
+    } catch (Exception $e) {
+        echo "<div class='error'><h2>Error</h2><p>Sorry, there was a problem retrieving the weather information. Please try again later.</p></div>";
+        exit();
+    }
+
     $weather = json_decode($data);
 
     if ($weather != null) {
@@ -84,6 +91,7 @@ if(isset($_POST['submit'])){
     }
 }
 ?>
+
 </div>
 </body>
 </html>
