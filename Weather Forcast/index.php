@@ -9,7 +9,7 @@
 <h1>Weather App</h1>
 	<form method="post">
 		<label for="state">Select a State:</label>
-		<select id="state" name="state">
+		<select id="state" name="state" required>
 			<option value="">--Select State--</option>
 			<option value="Abuja">Abuja</option>
 			<option value="Abia">Abia</option>
